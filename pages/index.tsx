@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { createRef, useEffect, useState } from 'react'
 import { FaBox, FaCheck, FaPaperPlane, FaTree } from 'react-icons/fa'
+import Reward, { RewardElement } from 'react-rewards'
 import Header from '../components/Header'
 
 const Home: NextPage = () => {
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
   const [checkRules, setCheckRules] = useState<boolean>(false)
   const [checkAddServer, setCheckAddServer] = useState<boolean>(false)
   const playSectionRef = createRef<HTMLDivElement>()
+  const rewardRef = createRef<RewardElement>()
 
   useEffect(() => {
     if (localStorage.getItem('readRules')) {
@@ -32,6 +34,7 @@ const Home: NextPage = () => {
   const handleCheckAddServer = () => {
     localStorage.setItem('checkAddServer', 'true')
     setCheckAddServer(true)
+    rewardRef.current?.rewardMe()
   }
 
   const scrollToPlaySection = () => {
@@ -141,22 +144,24 @@ const Home: NextPage = () => {
                 </span>
               )}
             </div>
-            {!checkAddServer && checkRules && (
-              <div className="flex flex-col mt-2 ml-12">
-                <p className="mb-3 text-sm">MinecraftのマルチプレイサーバーにKotaServerを追加しよう！</p>
-                <div className="flex items-center self-end">
-                  <a href="#" className="py-1 px-3 text-sm font-bold text-deep-orange hover:bg-gray-50 rounded-lg transition">
-                    手順を見る
-                  </a>
-                  <button
-                    onClick={handleCheckAddServer}
-                    className="py-1 px-3 ml-2 text-sm font-bold text-white bg-deep-orange hover:bg-orange disabled:hover:bg-gray-200 disabled:bg-gray-200 rounded-lg shadow-flat active:shadow-inner disabled:shadow-none transition"
-                  >
-                    オッケー！
-                  </button>
+            <Reward ref={rewardRef} type="confetti">
+              {!checkAddServer && checkRules && (
+                <div className="flex flex-col mt-2 ml-12">
+                  <p className="mb-3 text-sm">MinecraftのマルチプレイサーバーにKotaServerを追加しよう！</p>
+                  <div className="flex items-center self-end">
+                    <a href="#" className="py-1 px-3 text-sm font-bold text-deep-orange hover:bg-gray-50 rounded-lg transition">
+                      手順を見る
+                    </a>
+                    <button
+                      onClick={handleCheckAddServer}
+                      className="py-1 px-3 ml-2 text-sm font-bold text-white bg-deep-orange hover:bg-orange disabled:hover:bg-gray-200 disabled:bg-gray-200 rounded-lg shadow-flat active:shadow-inner disabled:shadow-none transition"
+                    >
+                      オッケー！
+                    </button>
+                  </div>
                 </div>
-              </div>
               )}
+            </Reward>
           </div>
         </div>
       </main>

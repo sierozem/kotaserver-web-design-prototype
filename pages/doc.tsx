@@ -1,23 +1,11 @@
-import { FaSearch, FaTwitter, FaDiscord } from 'react-icons/fa'
-import Logo from '../images/logo.svg'
-import Brand from '../images/brand.svg'
 import type { NextPage } from 'next'
+import Header from '../components/Header'
 
 const Home: NextPage = () => {
   return (
     <div className="min-h-screen text-[15px] leading-[1.8] text-gray-700">
-      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-      <header className="flex fixed top-0 right-0 left-0 items-center px-2 pt-5 pb-2 bg-white bg-layerd-bottom bg-repeat-x bg-wave-bottom shadow-sm bg-[length:auto_15px]">
-        <div className="flex items-end">
-          <Logo className="w-[40px] h-[48px]" />
-          <Brand className="ml-[-3px] w-[210px] h-[40px]" />
-        </div>
-        <div className="flex flex-1 items-center py-3 px-4 mx-4 text-deep-orange bg-gray-100 rounded-lg">
-          <FaSearch />
-          <span className="ml-3 text-sm text-gray-500">検索窓は準備中です！</span>
-        </div>
-        <FaTwitter className="mx-2 w-6 h-6 text-deep-orange transition ease-in-out hover:scale-[1.3] cursor-pointer" />
-        <FaDiscord className="mx-2 w-6 h-6 text-deep-orange transition ease-in-out hover:scale-[1.3] cursor-pointer" />
+      <header className="fixed top-0 right-0 left-0">
+        <Header />
       </header>
       <main className="pt-[76px]">
         <nav className="overflow-y-scroll fixed top-[76px] bottom-0 left-0 p-8 w-72 font-bold">

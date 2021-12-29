@@ -7,6 +7,7 @@ import Header from '../components/Header'
 const Home: NextPage = () => {
   const [readRules, setReadRules] = useState<boolean>(false)
   const [checkRules, setCheckRules] = useState<boolean>(false)
+  const [checkAddServer, setCheckAddServer] = useState<boolean>(false)
 
   useEffect(() => {
     if (localStorage.getItem('readRules')) {
@@ -16,11 +17,20 @@ const Home: NextPage = () => {
     if (localStorage.getItem('checkRules')) {
       setCheckRules(true)
     }
+
+    if (localStorage.getItem('checkAddServer')) {
+      setCheckAddServer(true)
+    }
   }, [])
 
   const handleCheckRules = () => {
     localStorage.setItem('checkRules', 'true')
     setCheckRules(true)
+  }
+
+  const handleCheckAddServer = () => {
+    localStorage.setItem('checkAddServer', 'true')
+    setCheckAddServer(true)
   }
 
   return (
@@ -102,6 +112,43 @@ const Home: NextPage = () => {
                 </div>
               </div>
             )}
+          </div>
+          <div className="mx-auto w-[4px] h-8 bg-black opacity-10"></div>
+          <div className="py-4 px-6 mx-auto w-96 bg-white rounded-lg shadow-md">
+            <div className="flex items-center">
+              {checkAddServer ? (
+                <div className="p-2 mr-4 text-white bg-deep-orange rounded-full shadow-md">
+                  <FaCheck className="w-4 h-4" />
+                </div>
+              ) : (
+                <div className="mr-4 w-8 h-8 rounded-full border-4 border-gray-200" />
+              )}
+              {checkRules ? (
+                <span className="text-lg">
+                  MinecraftにKotaServerを追加する
+                </span>
+              ) : (
+                <span className="text-lg text-gray-400">
+                  MinecraftにKotaServerを追加する
+                </span>
+              )}
+            </div>
+            {!checkAddServer && checkRules && (
+              <div className="flex flex-col mt-2 ml-12">
+                <p className="mb-3 text-sm">MinecraftのマルチプレイサーバーにKotaServerを追加しよう！</p>
+                <div className="flex items-center self-end">
+                  <a href="#" className="py-1 px-3 text-sm font-bold text-deep-orange hover:bg-gray-50 rounded-lg transition">
+                    手順を見る
+                  </a>
+                  <button
+                    onClick={handleCheckAddServer}
+                    className="py-1 px-3 ml-2 text-sm font-bold text-white bg-deep-orange hover:bg-orange disabled:hover:bg-gray-200 disabled:bg-gray-200 rounded-lg shadow-flat active:shadow-inner disabled:shadow-none transition"
+                  >
+                    オッケー！
+                  </button>
+                </div>
+              </div>
+              )}
           </div>
         </div>
       </main>

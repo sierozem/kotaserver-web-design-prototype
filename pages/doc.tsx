@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Header from '../components/Header'
+import SideNav from '../components/SideNav'
 
 const Home: NextPage = () => {
   return (
@@ -7,58 +8,10 @@ const Home: NextPage = () => {
       <header className="fixed top-0 right-0 left-0">
         <Header />
       </header>
+      <nav className="overflow-y-scroll fixed top-[76px] bottom-0 left-0 w-72">
+        <SideNav />
+      </nav>
       <main className="pt-[76px]">
-        <nav className="overflow-y-scroll fixed top-[76px] bottom-0 left-0 p-8 w-72 font-bold">
-          <ul>
-            <li className="mb-12">
-              <h5 className="inline-block py-1 px-2 mb-2 text-xs text-white bg-deep-orange rounded">
-                はじめる
-              </h5>
-              <ul className="pl-4 text-gray-600">
-                <li className="mt-1">こた鯖案内</li>
-                <li className="mt-1">ルール</li>
-                <li className="mt-1">免責事項</li>
-              </ul>
-            </li>
-            <li className="mb-12">
-              <h5 className="inline-block py-1 px-2 mb-2 text-xs text-white bg-deep-orange rounded">
-                イベント
-              </h5>
-              <ul className="pl-4 text-gray-600">
-                <li className="mt-1">建築コンテスト</li>
-                <li className="mt-1">オークション</li>
-                <li className="mt-1">イベント</li>
-                <li className="mt-1">さばちゃんぽん</li>
-              </ul>
-            </li>
-            <li className="mb-12">
-              <h5 className="inline-block py-1 px-2 mb-2 text-xs text-white bg-deep-orange rounded">
-                ガイド
-              </h5>
-              <ul className="pl-4 text-gray-600">
-                <li className="mt-1">サーバーの機能</li>
-                <li className="mt-1">機能の一覧</li>
-                <li className="mt-1">MODの導入方法</li>
-                <li className="mt-1">日本語入力のしかた</li>
-                <li className="mt-1">Discordの使い方</li>
-                <li className="mt-1">ワールド</li>
-              </ul>
-            </li>
-            <li>
-              <h5 className="inline-block py-1 px-2 mb-2 text-xs text-white bg-deep-orange rounded">
-                サーバー情報
-              </h5>
-              <ul className="pl-4 text-gray-600">
-                <li className="mt-1">掲示板</li>
-                <li className="mt-1">生放送・動画</li>
-                <li className="mt-1">スタッフ</li>
-                <li className="mt-1">よくある質問</li>
-                <li className="mt-1">問い合わせ</li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
         <section className="p-8 ml-72">
           <p className="mb-3 text-sm font-black text-deep-orange">ガイド</p>
           <h1 className="mb-8 text-4xl font-black">

@@ -1,111 +1,169 @@
-import { FaSearch, FaTwitter, FaDiscord } from 'react-icons/fa'
-import Logo from '../images/logo.svg'
-import Brand from '../images/brand.svg'
 import type { NextPage } from 'next'
+import Link from 'next/link'
+import { createRef, useEffect, useState } from 'react'
+import { FaBox, FaCheck, FaPaperPlane, FaTree } from 'react-icons/fa'
+import Reward, { RewardElement } from 'react-rewards'
+import Header from '../components/Header'
 
 const Home: NextPage = () => {
+  const [readRules, setReadRules] = useState<boolean>(false)
+  const [checkRules, setCheckRules] = useState<boolean>(false)
+  const [checkAddServer, setCheckAddServer] = useState<boolean>(false)
+  const playSectionRef = createRef<HTMLDivElement>()
+  const rewardRef = createRef<RewardElement>()
+
+  useEffect(() => {
+    if (localStorage.getItem('readRules')) {
+      setReadRules(true)
+    }
+
+    if (localStorage.getItem('checkRules')) {
+      setCheckRules(true)
+    }
+
+    if (localStorage.getItem('checkAddServer')) {
+      setCheckAddServer(true)
+    }
+  }, [])
+
+  const handleCheckRules = () => {
+    localStorage.setItem('checkRules', 'true')
+    setCheckRules(true)
+  }
+
+  const handleCheckAddServer = () => {
+    localStorage.setItem('checkAddServer', 'true')
+    setCheckAddServer(true)
+    rewardRef.current?.rewardMe()
+  }
+
+  const scrollToPlaySection = () => {
+    playSectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <div className="min-h-screen text-[15px] leading-[1.8] text-gray-700">
-      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-      <header className="flex fixed top-0 right-0 left-0 items-center px-2 pt-5 pb-2 bg-white bg-layerd-bottom bg-repeat-x bg-wave-bottom shadow-sm bg-[length:auto_15px]">
-        <div className="flex items-end">
-          <Logo className="w-[40px] h-[48px]" />
-          <Brand className="ml-[-3px] w-[210px] h-[40px]" />
-        </div>
-        <div className="flex flex-1 items-center py-3 px-4 mx-4 text-deep-orange bg-gray-100 rounded-lg">
-          <FaSearch />
-          <span className="ml-3 text-sm text-gray-500">検索窓は準備中です！</span>
-        </div>
-        <FaTwitter className="mx-2 w-6 h-6 text-deep-orange transition ease-in-out hover:scale-[1.3] cursor-pointer" />
-        <FaDiscord className="mx-2 w-6 h-6 text-deep-orange transition ease-in-out hover:scale-[1.3] cursor-pointer" />
+    <div className="pt-[76px] min-h-screen text-[15px] leading-[1.8] text-gray-700">
+      <header className="fixed top-0 right-0 left-0 z-50">
+        <Header />
       </header>
-      <main className="pt-[76px]">
-        <nav className="overflow-y-scroll fixed top-[76px] bottom-0 left-0 p-8 w-72 font-bold">
-          <ul>
-            <li className="mb-12">
-              <h5 className="inline-block py-1 px-2 mb-2 text-xs text-white bg-deep-orange rounded">
-                はじめる
-              </h5>
-              <ul className="pl-4 text-gray-600">
-                <li className="mt-1">こた鯖案内</li>
-                <li className="mt-1">ルール</li>
-                <li className="mt-1">免責事項</li>
-              </ul>
-            </li>
-            <li className="mb-12">
-              <h5 className="inline-block py-1 px-2 mb-2 text-xs text-white bg-deep-orange rounded">
-                イベント
-              </h5>
-              <ul className="pl-4 text-gray-600">
-                <li className="mt-1">建築コンテスト</li>
-                <li className="mt-1">オークション</li>
-                <li className="mt-1">イベント</li>
-                <li className="mt-1">さばちゃんぽん</li>
-              </ul>
-            </li>
-            <li className="mb-12">
-              <h5 className="inline-block py-1 px-2 mb-2 text-xs text-white bg-deep-orange rounded">
-                ガイド
-              </h5>
-              <ul className="pl-4 text-gray-600">
-                <li className="mt-1">サーバーの機能</li>
-                <li className="mt-1">機能の一覧</li>
-                <li className="mt-1">MODの導入方法</li>
-                <li className="mt-1">日本語入力のしかた</li>
-                <li className="mt-1">Discordの使い方</li>
-                <li className="mt-1">ワールド</li>
-              </ul>
-            </li>
-            <li>
-              <h5 className="inline-block py-1 px-2 mb-2 text-xs text-white bg-deep-orange rounded">
-                サーバー情報
-              </h5>
-              <ul className="pl-4 text-gray-600">
-                <li className="mt-1">掲示板</li>
-                <li className="mt-1">生放送・動画</li>
-                <li className="mt-1">スタッフ</li>
-                <li className="mt-1">よくある質問</li>
-                <li className="mt-1">問い合わせ</li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
+      <main className="relative">
         {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-        <section className="p-8 ml-72">
-          <p className="mb-3 text-sm font-black text-deep-orange">ガイド</p>
-          <h1 className="mb-8 text-4xl font-black">
-            日本語入力のしかた
+        <div className="p-24 bg-top bg-no-repeat bg-layered-waves-bottom bg-[length:100%_640px]">
+          <h1 className="mb-8 text-6xl font-black text-center">
+            いいかんじの<br />キャッチコピーをここに
           </h1>
-          <p>Minecraftで日本語を打つ際に必要なテクニックと問題の解決方法を書いたページです。</p>
-          <h2 className="flex items-center mt-12 before:mr-2 mb-4 before:w-4 before:h-4 text-2xl font-bold before:bg-deep-orange before:rounded-full">はじめに</h2>
-          <p>Minecraftが1.13になってから多くのMODが対応できておらず、日本語MODも久しくアップデートがありません。</p>
-          <p>癖はありますが、現在でも日本語チャットはMODなどを入れなくても出来るようになっているため、これを習得しましょう！</p>
-          <h2 className="flex items-center mt-12 before:mr-2 mb-4 before:w-4 before:h-4 text-2xl font-bold before:bg-deep-orange before:rounded-full">手順</h2>
-          <p>まずTキーを押すとチャット入力画面が出てきます。</p>
-          <p>次に全角/半角キーを押すと入力方法がひらがなに変わり、ローマ字入力をすることができます。</p>
-          <p>チャットをEnterで送信した後は全角/半角キーを押して入力を直接入力に戻します。</p>
-          <h2 className="flex items-center mt-12 before:mr-2 mb-4 before:w-4 before:h-4 text-2xl font-bold before:bg-deep-orange before:rounded-full">トラブル</h2>
-          <ul className="pl-6 list-disc">
-            <li>日本語打った後、動けなくなるし画面に文字がでてくる</li>
-            <li>
-              <ul>
-                <li>直接入力の戻し忘れだと思います。BackSpaceキーを押して文字を全部消した後、全角半角を押してみて下さい。</li>
-              </ul>
-            </li>
-            <li>日本語に切り替わらない・入力そのものが変</li>
-            <li>
-              <ul>
-                <li>
-                  トラブルが発生しやすいキーをわかりやすくまとめてくれているページがあります。<br />
-                  http://tabotabo.my.coocan.jp/key/key001.htm
-                  </li>
-              </ul>
-            </li>
-          </ul>
-          <footer className="pt-8 mt-8 text-center text-gray-400 border-t-2 border-gray-100">
-            <p>Copyright &copy; 2021 KotaServer</p>
-          </footer>
-        </section>
+          <p className="mb-12 text-center">
+            ちょっと長めに文章を書くちょっと長めに文章を書くちょっと長めに文章を書く
+          </p>
+          <div className="flex justify-center items-center">
+            <button
+              onClick={scrollToPlaySection}
+              className="py-3 w-40 text-lg font-bold text-center text-white bg-deep-orange hover:bg-orange rounded-full shadow-flat active:shadow-inner transition-colors duration-150"
+            >
+              参加してみる
+            </button>
+            <Link href="/doc">
+              <a className="py-3 ml-4 w-40 text-lg font-bold text-center text-deep-orange bg-white hover:bg-gray-50 active:bg-gray-100 rounded-full shadow-flat active:shadow-inner transition duration-150">
+                プレイガイド
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="p-16">
+          <h2 className="mb-16 text-4xl font-black text-center">こた鯖の魅力</h2>
+          <div className="flex justify-evenly items-center">
+            <div className="p-8 mx-4 text-center bg-white rounded-lg shadow-lg">
+              <FaPaperPlane className="mx-auto mb-8 w-16 h-16 text-deep-orange" />
+              <h3 className="mb-2 text-2xl font-bold">はやい</h3>
+              <p className="text-gray-500">こた鯖の魅力の説明こた鯖の魅力の説明こた鯖の魅力の説明</p>
+            </div>
+            <div className="p-8 mx-4 text-center bg-white rounded-lg shadow-lg">
+              <FaTree className="mx-auto mb-8 w-16 h-16 text-deep-orange" />
+              <h3 className="mb-2 text-2xl font-bold">やすい</h3>
+              <p className="text-gray-500">こた鯖の魅力の説明こた鯖の魅力の説明こた鯖の魅力の説明</p>
+            </div>
+            <div className="p-8 mx-4 text-center bg-white rounded-lg shadow-lg">
+              <FaBox className="mx-auto mb-8 w-16 h-16 text-deep-orange" />
+              <h3 className="mb-2 text-2xl font-bold">うまい</h3>
+              <p className="text-gray-500">こた鯖の魅力の説明こた鯖の魅力の説明こた鯖の魅力の説明</p>
+            </div>
+          </div>
+        </div>
+        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+        <div className="absolute top-[640px] right-0 left-0 h-[600px] bg-center bg-stacked-waves -z-50 bg-[length:100%_600px]" />
+        <div className="p-16" ref={playSectionRef}>
+          <h2 className="mb-16 text-4xl font-black text-center">こた鯖であそぼう！</h2>
+          <div className="py-4 px-6 mx-auto w-96 bg-white rounded-lg shadow-md">
+            <div className="flex items-center">
+              {checkRules ? (
+                <div className="p-2 mr-4 text-white bg-deep-orange rounded-full shadow-md">
+                  <FaCheck className="w-4 h-4" />
+                </div>
+              ) : (
+                <div className="mr-4 w-8 h-8 rounded-full border-4 border-gray-200" />
+              )}
+              <span className="text-lg">ルールを読んで理解する</span>
+            </div>
+            {!checkRules && (
+              <div className="flex flex-col mt-2 ml-12">
+                <p className="mb-3 text-sm">こた鯖でやってはいけないことや気をつけないといけないことをチェックしよう！</p>
+                <div className="flex items-center self-end">
+                  <Link href="/rules">
+                    <a className="py-1 px-3 text-sm font-bold text-deep-orange hover:bg-gray-50 rounded-lg transition">
+                      ルールを読む
+                    </a>
+                  </Link>
+                  <button
+                    disabled={readRules === true ? false : true}
+                    onClick={handleCheckRules}
+                    className="py-1 px-3 ml-2 text-sm font-bold text-white bg-deep-orange hover:bg-orange disabled:hover:bg-gray-200 disabled:bg-gray-200 rounded-lg shadow-flat active:shadow-inner disabled:shadow-none transition"
+                  >
+                    オッケー！
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="mx-auto w-[4px] h-8 bg-black opacity-10"></div>
+          <div className="py-4 px-6 mx-auto w-96 bg-white rounded-lg shadow-md">
+            <div className="flex items-center">
+              {checkAddServer ? (
+                <div className="p-2 mr-4 text-white bg-deep-orange rounded-full shadow-md">
+                  <FaCheck className="w-4 h-4" />
+                </div>
+              ) : (
+                <div className="mr-4 w-8 h-8 rounded-full border-4 border-gray-200" />
+              )}
+              {checkRules ? (
+                <span className="text-lg">
+                  MinecraftにKotaServerを追加する
+                </span>
+              ) : (
+                <span className="text-lg text-gray-400">
+                  MinecraftにKotaServerを追加する
+                </span>
+              )}
+            </div>
+            <Reward ref={rewardRef} type="confetti">
+              {!checkAddServer && checkRules && (
+                <div className="flex flex-col mt-2 ml-12">
+                  <p className="mb-3 text-sm">MinecraftのマルチプレイサーバーにKotaServerを追加しよう！</p>
+                  <div className="flex items-center self-end">
+                    <a href="#" className="py-1 px-3 text-sm font-bold text-deep-orange hover:bg-gray-50 rounded-lg transition">
+                      手順を見る
+                    </a>
+                    <button
+                      onClick={handleCheckAddServer}
+                      className="py-1 px-3 ml-2 text-sm font-bold text-white bg-deep-orange hover:bg-orange disabled:hover:bg-gray-200 disabled:bg-gray-200 rounded-lg shadow-flat active:shadow-inner disabled:shadow-none transition"
+                    >
+                      オッケー！
+                    </button>
+                  </div>
+                </div>
+              )}
+            </Reward>
+          </div>
+        </div>
       </main>
     </div>
   )

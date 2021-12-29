@@ -1,9 +1,28 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { FaBox, FaPaperPlane, FaTree } from 'react-icons/fa'
+import { useEffect, useState } from 'react'
+import { FaBox, FaCheck, FaPaperPlane, FaTree } from 'react-icons/fa'
 import Header from '../components/Header'
 
 const Home: NextPage = () => {
+  const [readRules, setReadRules] = useState<boolean>(false)
+  const [checkRules, setCheckRules] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (localStorage.getItem('readRules')) {
+      setReadRules(true)
+    }
+
+    if (localStorage.getItem('checkRules')) {
+      setCheckRules(true)
+    }
+  }, [])
+
+  const handleCheckRules = () => {
+    localStorage.setItem('checkRules', 'true')
+    setCheckRules(true)
+  }
+
   return (
     <div className="pt-[76px] min-h-screen text-[15px] leading-[1.8] text-gray-700">
       <header className="fixed top-0 right-0 left-0 z-50">
@@ -51,6 +70,40 @@ const Home: NextPage = () => {
         </div>
         {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
         <div className="absolute top-[640px] right-0 left-0 h-[600px] bg-center bg-stacked-waves -z-50 bg-[length:100%_600px]" />
+        <div className="p-16">
+          <h2 className="mb-16 text-4xl font-black text-center">こた鯖であそぼう！</h2>
+          <div className="py-4 px-6 mx-auto w-96 bg-white rounded-lg shadow-md">
+            <div className="flex items-center">
+              {checkRules ? (
+                <div className="p-2 mr-4 text-white bg-deep-orange rounded-full shadow-md">
+                  <FaCheck className="w-4 h-4" />
+                </div>
+              ) : (
+                <div className="mr-4 w-8 h-8 rounded-full border-4 border-gray-200" />
+              )}
+              <span className="text-lg">ルールを読んで理解する</span>
+            </div>
+            {!checkRules && (
+              <div className="flex flex-col mt-2 ml-12">
+                <p className="mb-3 text-sm">こた鯖でやってはいけないことや気をつけないといけないことをチェックしよう！</p>
+                <div className="flex items-center self-end">
+                  <Link href="/rules">
+                    <a className="py-1 px-3 text-sm font-bold text-deep-orange hover:bg-gray-50 rounded-lg transition">
+                      ルールを読む
+                    </a>
+                  </Link>
+                  <button
+                    disabled={readRules === true ? false : true}
+                    onClick={handleCheckRules}
+                    className="py-1 px-3 ml-2 text-sm font-bold text-white bg-deep-orange hover:bg-orange disabled:hover:bg-gray-200 disabled:bg-gray-200 rounded-lg shadow-flat active:shadow-inner disabled:shadow-none transition"
+                  >
+                    オッケー！
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </main>
     </div>
   )

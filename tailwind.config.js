@@ -21,6 +21,8 @@ module.exports = {
       backgroundImage: {
         'wave-top': "url('/wave_top.svg'), url('/wave_top.svg')",
         'wave-bottom': "url('/wave_bottom.svg'), url('/wave_bottom.svg')",
+        'layered-waves-bottom': "url('/layered-waves-bottom.svg')",
+        'stacked-waves': "url('/stacked-waves.svg')",
       },
       backgroundPosition: {
         'layerd-top': '0 bottom, 100px bottom',

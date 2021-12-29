@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { createRef, useEffect, useState } from 'react'
 import { FaBox, FaCheck, FaPaperPlane, FaTree } from 'react-icons/fa'
 import Header from '../components/Header'
 
@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   const [readRules, setReadRules] = useState<boolean>(false)
   const [checkRules, setCheckRules] = useState<boolean>(false)
   const [checkAddServer, setCheckAddServer] = useState<boolean>(false)
+  const playSectionRef = createRef<HTMLDivElement>()
 
   useEffect(() => {
     if (localStorage.getItem('readRules')) {
@@ -33,6 +34,10 @@ const Home: NextPage = () => {
     setCheckAddServer(true)
   }
 
+  const scrollToPlaySection = () => {
+    playSectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <div className="pt-[76px] min-h-screen text-[15px] leading-[1.8] text-gray-700">
       <header className="fixed top-0 right-0 left-0 z-50">
@@ -48,7 +53,10 @@ const Home: NextPage = () => {
             ちょっと長めに文章を書くちょっと長めに文章を書くちょっと長めに文章を書く
           </p>
           <div className="flex justify-center items-center">
-            <button className="py-3 w-40 text-lg font-bold text-center text-white bg-deep-orange hover:bg-orange rounded-full shadow-flat active:shadow-inner transition-colors duration-150">
+            <button
+              onClick={scrollToPlaySection}
+              className="py-3 w-40 text-lg font-bold text-center text-white bg-deep-orange hover:bg-orange rounded-full shadow-flat active:shadow-inner transition-colors duration-150"
+            >
               参加してみる
             </button>
             <Link href="/doc">
@@ -80,7 +88,7 @@ const Home: NextPage = () => {
         </div>
         {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
         <div className="absolute top-[640px] right-0 left-0 h-[600px] bg-center bg-stacked-waves -z-50 bg-[length:100%_600px]" />
-        <div className="p-16">
+        <div className="p-16" ref={playSectionRef}>
           <h2 className="mb-16 text-4xl font-black text-center">こた鯖であそぼう！</h2>
           <div className="py-4 px-6 mx-auto w-96 bg-white rounded-lg shadow-md">
             <div className="flex items-center">

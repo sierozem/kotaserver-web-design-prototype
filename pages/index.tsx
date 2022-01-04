@@ -64,7 +64,7 @@ const Home: NextPage = () => {
             >
               参加してみる
             </button>
-            <Link href="/doc">
+            <Link href="/guide">
               <a className="py-3 ml-4 w-40 text-lg font-bold text-center text-deep-orange bg-white hover:bg-gray-50 active:bg-gray-100 rounded-full shadow-flat active:shadow-inner transition duration-150">
                 プレイガイド
               </a>

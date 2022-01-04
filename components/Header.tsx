@@ -1,4 +1,4 @@
-import { FaSearch, FaDiscord, FaTwitter} from 'react-icons/fa'
+import { FaDiscord, FaMapMarkerAlt, FaSearch, FaTwitter} from 'react-icons/fa'
 import Brand from '../images/brand.svg'
 import Logo from '../images/logo.svg'
 
@@ -15,8 +15,9 @@ const Header: React.VFC = () => {
           <FaSearch />
           <span className="ml-3 text-sm text-gray-500">検索窓は準備中です！</span>
         </div>
-        <FaTwitter className="mx-2 w-6 h-6 text-deep-orange transition ease-in-out hover:scale-[1.3] cursor-pointer" />
-        <FaDiscord className="mx-2 w-6 h-6 text-deep-orange transition ease-in-out hover:scale-[1.3] cursor-pointer" />
+        <FaTwitter className="mx-2 w-6 h-6 transition ease-in-out hover:scale-[1.3] cursor-pointer" />
+        <FaDiscord className="mx-2 w-6 h-6 transition ease-in-out hover:scale-[1.3] cursor-pointer" />
+        <FaMapMarkerAlt className="mx-2 w-6 h-6 transition ease-in-out hover:scale-[1.3] cursor-pointer" />
       </div>
     </>
   )

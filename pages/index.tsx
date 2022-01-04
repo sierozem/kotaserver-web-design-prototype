@@ -42,10 +42,12 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="pt-[76px] min-h-screen text-[15px] leading-[1.8] text-gray-700">
+    <div className="pt-[76px] min-h-screen text-[15px] leading-[1.8] text-gray-700 bg-cream">
       <header className="fixed top-0 right-0 left-0 z-50">
         <Header />
       </header>
+      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+      <div className="absolute top-[640px] right-0 left-0 h-[600px] bg-center bg-stacked-waves bg-[length:100%_600px]" />
       <main className="relative">
         {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
         <div className="p-24 bg-top bg-no-repeat bg-layered-waves-bottom bg-[length:100%_640px]">
@@ -62,7 +64,7 @@ const Home: NextPage = () => {
             >
               参加してみる
             </button>
-            <Link href="/doc">
+            <Link href="/guide">
               <a className="py-3 ml-4 w-40 text-lg font-bold text-center text-deep-orange bg-white hover:bg-gray-50 active:bg-gray-100 rounded-full shadow-flat active:shadow-inner transition duration-150">
                 プレイガイド
               </a>
@@ -89,8 +91,6 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-        <div className="absolute top-[640px] right-0 left-0 h-[600px] bg-center bg-stacked-waves -z-50 bg-[length:100%_600px]" />
         <div className="p-16" ref={playSectionRef}>
           <h2 className="mb-16 text-4xl font-black text-center">こた鯖であそぼう！</h2>
           <div className="py-4 px-6 mx-auto w-96 bg-white rounded-lg shadow-md">

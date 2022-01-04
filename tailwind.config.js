@@ -13,7 +13,7 @@ module.exports = {
         'cream': '#fffbf2',
       },
       fontFamily: {
-        'sans': ["'M Plus Rounded 1c'", 'sans-serif'],
+        'sans': ["'M PLUS 2'", 'sans-serif'],
       },
       boxShadow: {
         'flat': '0 3px 0 rgba(0, 0, 0, .06)',

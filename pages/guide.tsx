@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { FaBook, FaCalendar, FaCog, FaDoorOpen, FaHome, FaTree } from 'react-icons/fa'
 import Header from '../components/Header'
+import PortalLink from '../components/PortalLink'
 import WavesBackground from '../components/WavesBackground'
 
 const Guide: NextPage = () => {
@@ -16,76 +17,26 @@ const Guide: NextPage = () => {
           <section className="py-16">
             <h2 className="mb-8 text-3xl font-black text-center">はじめる</h2>
             <div className="flex flex-wrap justify-center">
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaDoorOpen className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">こた鯖に参加するまで</p>
-                </div>
-              </div>
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaBook className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">ルール</p>
-                </div>
-              </div>
+              <PortalLink title="こた鯖に参加するまで" iconType={FaDoorOpen} />
+              <PortalLink title="ルール" iconType={FaBook} />
             </div>
           </section>
-          <section className="relative py-16">
+          <section className="py-16">
             <h2 className="mb-8 text-3xl font-black text-center">こた鯖での暮らし</h2>
             <div className="flex flex-wrap justify-center">
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaTree className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">素材をあつめる</p>
-                </div>
-              </div>
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaHome className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">建築する</p>
-                </div>
-              </div>
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaCalendar className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">イベントに参加する</p>
-                </div>
-              </div>
+              <PortalLink title="素材をあつめる" iconType={FaTree} />
+              <PortalLink title="建築する" iconType={FaHome} />
+              <PortalLink title="イベントに参加する" iconType={FaCalendar} />
             </div>
           </section>
-          <section className="relative py-16">
+          <section className="py-16">
             <h2 className="mb-8 text-3xl font-black text-center">便利な機能</h2>
             <div className="flex flex-wrap justify-center">
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaCog className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">項目1</p>
-                </div>
-              </div>
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaCog className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">項目2</p>
-                </div>
-              </div>
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaCog className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">項目3</p>
-                </div>
-              </div>
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaCog className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">項目4</p>
-                </div>
-              </div>
-              <div className="p-2 w-1/3">
-                <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-                  <FaCog className="mr-4 w-12 h-12" />
-                  <p className="text-lg font-bold">項目5</p>
-                </div>
-              </div>
+              <PortalLink title="項目1" iconType={FaCog} />
+              <PortalLink title="項目2" iconType={FaCog} />
+              <PortalLink title="項目3" iconType={FaCog} />
+              <PortalLink title="項目4" iconType={FaCog} />
+              <PortalLink title="項目5" iconType={FaCog} />
             </div>
           </section>
         </div>

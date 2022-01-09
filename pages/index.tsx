@@ -4,6 +4,7 @@ import { createRef, useEffect, useState } from 'react'
 import { FaBox, FaCheck, FaPaperPlane, FaTree } from 'react-icons/fa'
 import Reward, { RewardElement } from 'react-rewards'
 import Header from '../components/Header'
+import WavesBackground from '../components/WavesBackground'
 
 const Home: NextPage = () => {
   const [readRules, setReadRules] = useState<boolean>(false)
@@ -42,15 +43,13 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="pt-[76px] min-h-screen text-[15px] leading-[1.8] text-gray-700 bg-cream">
+    <div className="pt-[76px] min-h-screen text-[15px] leading-[1.8] text-gray-700">
       <header className="fixed top-0 right-0 left-0 z-50">
         <Header />
       </header>
-      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-      <div className="absolute top-[640px] right-0 left-0 h-[600px] bg-center bg-stacked-waves bg-[length:100%_600px]" />
       <main className="relative">
-        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-        <div className="p-24 bg-top bg-no-repeat bg-layered-waves-bottom bg-[length:100%_640px]">
+        <WavesBackground />
+        <div className="p-24">
           <h1 className="mb-8 text-6xl font-black text-center">
             いいかんじの<br />キャッチコピーをここに
           </h1>

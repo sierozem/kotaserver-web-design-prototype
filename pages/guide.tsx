@@ -12,7 +12,7 @@ const Guide: NextPage = () => {
       </header>
       <main className="relative">
         <WavesBackground />
-        <div className="py-16">
+        <div className="container py-16 mx-auto">
           <h1 className="mb-16 text-5xl font-black text-center">プレイガイド</h1>
           <section className="py-16">
             <h2 className="mb-8 text-3xl font-black text-center">はじめる</h2>

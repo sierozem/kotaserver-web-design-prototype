@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { IconType as ReactIconType } from 'react-icons'
 
 interface Props {
@@ -9,11 +10,17 @@ const PortalLink: React.VFC<Props> = ({ title, iconType }) => {
   const IconType = iconType
 
   return (
-    <div className="p-2 w-1/3">
-      <div className="flex items-center py-4 px-6 bg-white rounded-xl shadow">
-        <IconType className="mr-4 w-12 h-12" />
-        <p className="text-lg font-bold">{title}</p>
-      </div>
+    <div className="p-2 w-64">
+      <Link href="/doc">
+        <a className="flex overflow-hidden flex-col w-full h-full bg-white rounded-xl shadow transition-transform ease-in-out hover:scale-105">
+          <div className="p-6 w-full bg-gray-50">
+            <IconType className="mx-auto w-24 h-24" />
+          </div>
+          <p className="flex flex-grow justify-center items-center p-4 text-lg font-bold">
+            {title}
+          </p>
+        </a>
+      </Link>
     </div>
   )
 }
